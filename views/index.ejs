@@ -1,0 +1,19 @@
+<%- include("partials/header.ejs") %>
+<div class="box" id="heading">
+    <h1>Friday,September 1</h1>
+</div>
+<div class="box">
+    <div class="item">
+       <% if(locals.todoList){ %> 
+            <% locals.todoList.forEach((task)=>{ %>
+                <input type="checkbox">
+                <p><%=task.todoTask%></p>
+            <% }) %>
+        <% } %>
+    </div>
+   <form class="item" action="/" method="POST">
+     <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+     <button type="submit" name="list" value="Friday,september 1">+</button>
+   </form>
+</div>
+<%- include("partials/footer.ejs") %>
