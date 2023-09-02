@@ -7,18 +7,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/",(req,res)=>{
-    res.render("index.ejs");
+    res.render("index.ejs",{todoList: todos});
  })
 
-app.post("/",(req,res)=>{
+app.post("/submit",(req,res)=>{
     const inputTodoId = todos.length + 1;
     const inputTodoTask = req.body["newItem"];
     todos.push({
         todoId: inputTodoId,
         todoTask: inputTodoTask
     })
-    console.log(todos);
-  res.render("index.ejs",{todoList: todos});
+res.redirect("/");
 });
 
 app.listen(port,()=>{
